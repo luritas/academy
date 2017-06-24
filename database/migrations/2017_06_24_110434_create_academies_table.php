@@ -15,8 +15,8 @@ class CreateAcademiesTable extends Migration
     {
         Schema::create('academies', function (Blueprint $table) {
             $table->increments('idx');
-            $table->string('name');
-            $table->string('address');
+            $table->string('name')->index();
+            $table->string('address')->index();
             $table->string('owner');
             $table->string('tel');
             $table->string('course')->comment('교급과정');
@@ -34,6 +34,7 @@ class CreateAcademiesTable extends Migration
             $table->string('option7')->comment('기타경비합계');
             $table->string('total_price')->comment('총교습비');
             $table->integer('total_teachers');
+            $table->unique(['name','subject']);
             $table->timestamps();
         });
     }
